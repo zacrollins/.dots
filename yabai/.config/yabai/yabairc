@@ -1,0 +1,110 @@
+#!/usr/bin/env sh
+
+# Unload the macOS WindowManager process
+# launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist > /dev/null 2>&1 &
+
+# -- LOAD SCRIPTING ADDITIONS --
+
+sudo /opt/homebrew/bin/yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo /opt/homebrew/bin/yabai --load-sa"
+
+# sudo nvram boot-args=-arm64e_preview_abi
+# sudo yabai --uninstall-sa
+# sudo yabai --install-sa
+# sudo yabai --load-sa
+#
+# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# -- GLOBAL SETTINGS --
+
+yabai -m config                             \
+  external_bar                off:40:0      \
+  menubar_opacity             1.0           \
+  mouse_follows_focus         off           \
+  focus_follows_mouse         off           \
+  window_origin_display       default       \
+  window_placement            second_child  \
+  window_zoom_persist         on            \
+  window_shadow               off           \
+  window_animation_duration   0.0           \
+  insert_feedback_color       0xffd75f5f    \
+  window_opacity              on            \
+  window_opacity_duration     0.3           \
+  active_window_opacity       1.0           \
+  normal_window_opacity       0.90          \
+  split_ratio                 0.50          \
+  auto_balance                off           \
+                                            \
+  mouse_modifier              ctrl          \
+  mouse_action1               move          \
+  mouse_action2               resize        \
+  mouse_drop_action           swap          \
+
+
+# -- SPACE SETTINGS --
+
+yabai -m config                             \
+  top_padding                 3             \
+  bottom_padding              10            \
+  left_padding                10            \
+  right_padding               10            \
+  window_gap                  10            \
+                                            \
+  layout                      bsp
+
+
+# -- SETUP SPACES --
+
+$HOME/.config/yabai/scripts/setup_spaces.sh
+
+# -- RULES --
+
+# yabai indicator rules and ultrawide padding
+yabai -m signal --add event=mission_control_exit  action="echo 'refresh' | nc -U /tmp/yabai-indicator.socket"
+yabai -m signal --add event=display_added         action="echo 'refresh' | nc -U /tmp/yabai-indicator.socket"
+yabai -m signal --add event=display_removed       action="echo 'refresh' | nc -U /tmp/yabai-indicator.socket"
+yabai -m signal --add event=window_created        action="echo 'refresh windows' | nc -U /tmp/yabai-indicator.socket; $HOME/.config/yabai/scripts/padding.sh"
+yabai -m signal --add event=window_destroyed      action="echo 'refresh windows' | nc -U /tmp/yabai-indicator.socket; $HOME/.config/yabai/scripts/padding.sh"
+yabai -m signal --add event=window_focused        action="echo 'refresh windows' | nc -U /tmp/yabai-indicator.socket; $HOME/.config/yabai/scripts/padding.sh"
+yabai -m signal --add event=window_moved          action="echo 'refresh windows' | nc -U /tmp/yabai-indicator.socket; $HOME/.config/yabai/scripts/padding.sh"
+yabai -m signal --add event=window_resized        action="echo 'refresh windows' | nc -U /tmp/yabai-indicator.socket; $HOME/.config/yabai/scripts/padding.sh"
+yabai -m signal --add event=window_minimized      action="echo 'refresh windows' | nc -U /tmp/yabai-indicator.socket; $HOME/.config/yabai/scripts/padding.sh"
+yabai -m signal --add event=window_deminimized    action="echo 'refresh windows' | nc -U /tmp/yabai-indicator.socket; $HOME/.config/yabai/scripts/padding.sh"
+
+# focus next app when window destroyed
+yabai -m signal --add event=window_destroyed      action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
+
+# focus first window on space when changing spaces
+yabai -m signal --add event=space_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+
+# Exclude problematic apps from being managed:
+float_apps="(Karabiner-Elements|Software Update|Dictionary|System Preferences|System Settings|Archive Utility|App Store|Activity Monitor|Asana|OneDrive|VIA|Barracuda VPN Client|Homerow|Disk Utility|Microsoft Remote Desktop|Doll|USB Crash Cart Adapter|balenaEtcher|KeyCastr|Raycast)"
+yabai -m rule --add app="^${float_apps}$" manage=off
+# peferences
+yabai -m rule --add app='Preferences$' manage=off
+# logitech
+yabai -m rule --add app='^Logi' manage=off
+# apps to float and be sticky
+sticky_float_apps="(Finder|Authy Desktop|1Password|Preview|Calculator|System Information|Weather|Azure VPN Client)"
+yabai -m rule --add app="^${sticky_float_apps}$" sticky=on manage=off
+
+# Comunication Apps
+comm_apps="(Microsoft Teams|Microsoft Teams classic|Microsoft Teams (work or school)|Slack|Microsoft Outlook)"
+yabai -m rule --add app="^${comm_apps}.*$" space=8
+
+yabai -m rule --add app="^Microsoft Teams$"  title="^Microsoft Teams Notification$" manage=off
+
+yabai -m rule --add app="^Arc$" title="^Zac$" manage=off
+
+# Start JankyBorders
+borders &
+
+# Enable output of debug information to stdout. [<BOOL_SEL>]
+# yabai -m config debug_output on
+
+# monitor error log
+# tail -f /tmp/yabai_$USER.err.log
+# monitor output log
+# tail -f /tmp/yabai_$USER.out.log
+
+echo "yabai configuration loaded.."

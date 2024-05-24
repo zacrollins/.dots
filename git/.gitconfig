@@ -1,0 +1,106 @@
+[user]
+    # Your name to be shown in history
+    name = Zac Rollins
+
+    # Default email (can be overridden per repository)
+    email = zac.rollins@idrivelogistics.com
+
+[init]
+    # set default branch as main by default
+    defaultBranch = main
+
+[core]
+    # command for interactive edit window
+    editor = code --wait
+
+    # controls how git will handle line endings
+	# can be:
+	# true
+	#    automaticly convert text files to crlf on checkout and to lf on commit
+	# input
+	#    no conversion on checkout, convert to lf on commit.
+	# false
+	#    no conversion
+    # windows system
+    # autocrlf = true
+    # mac/linux system
+    autocrlf = input
+
+	# use custom `.gitignore` and `.gitattributes`
+    excludesfile = ~/.config/git/gitignore_global
+    attributesfile = ~/.config/git/gitattributes_global
+
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true # use n and N to move between diff sections
+    side-by-side = true
+    # delta detects terminal colors automatically; set one of these to disable auto-detection
+    # dark = true
+    # light = true
+
+[credential]
+    # store credentials in credential vault
+    # check version of manager using:
+    # git credential-manager version
+    helper = manager
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[color]
+	# use colors when writing output to terminal
+    ui = auto
+
+[color "status"]
+    # using bold colors makes them a bit more visible on dark background
+    added = green bold
+    untracked = red bold
+    changed = red bold
+
+[merge]
+	# include summaries of merged commits in newly created merge commit messages
+    log = true
+    tool = vscode
+    conflictstyle = diff3
+
+[mergetool "vscode"]
+    cmd = code --wait $merged
+
+[diff]
+    tool = vscode
+    colorMoved = default
+
+[difftool "vscode"]
+    cmd = code --wait --diff $local $remote
+
+[help]
+    # "guess" correct command when misspelling commands
+    # this will make "git commt" work
+    autocorrect = -1
+
+[pull]
+    # set how git handles fast-forward, can be false or only
+    # false will create extra merge commit on pull
+    # only will only pull if fast-forward is possible (same as --ff-only)
+    # ff = only
+
+    # always do --rebase on pull
+    # this prevents wierd merges when someone pushed a new commit and you have made local commits
+    # can be potentially dangerous
+    rebase = true
+
+[push]
+    # when doing git push, only push current branch
+    default = current
+
+[log]
+    # default to not show the full commit object name
+    abbrevCommit = true
+    # show short ref names on git log
+    decorate = short
+[credential "https://github.com"]
+	username = zacrollins
+[credential "https://dev.azure.com"]
+	useHttpPath = true

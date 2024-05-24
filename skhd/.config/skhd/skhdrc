@@ -1,0 +1,139 @@
+#!/usr/bin/env sh
+
+######################################
+# Modals declarations
+######################################
+:: default     : yabai -m config active_window_opacity 1 ; yabai -m config normal_window_opacity 0.9;
+:: resize    @ : yabai -m config normal_window_opacity 0.45 # Resize window operations
+:: stack     @ : yabai -m config normal_window_opacity 0.7 # stack window operations
+
+######################################
+# Shortcuts for modes
+######################################
+
+default       < cmd + ctrl + alt - r  ; resize
+default       < cmd + ctrl + alt - s  ; stack
+
+resize, stack < escape                ; default
+resize, stack < backspace             ; default
+resize        < cmd + ctrl + alt - r  ; default
+stack         < cmd + ctrl + alt - s  ; default
+
+######################################
+# Load configs
+######################################
+
+# rezise mode config
+.load "resize_mode_i3.sh"
+
+# load stack mode config
+.load "stack_mode.sh"
+
+# space naviagtion config
+# .load "spaces.sh"
+
+# app launcher config
+# .load "app_launcher.sh"
+
+######################################
+# Navigation
+######################################
+
+# Window Navigation (loop back to start at end of the line): alt - {h, j, k, l}
+alt - h         : yabai3 focus west
+alt - j         : yabai3 focus south
+alt - k         : yabai3 focus north
+alt - l         : yabai3 focus east
+
+# change focused workspace
+alt - 1         : yabai -m space --focus 1
+alt - 2         : yabai -m space --focus 2
+alt - 3         : yabai -m space --focus 3
+alt - 4         : yabai -m space --focus 4
+alt - 5         : yabai -m space --focus 5
+alt - 6         : yabai -m space --focus 6
+alt - 7         : yabai -m space --focus 7
+alt - 8         : yabai -m space --focus 8
+alt - 9         : yabai -m space --focus 9
+
+# move focused windows
+alt + shift - h : yabai3 move west
+alt + shift - j : yabai3 move south
+alt + shift - k : yabai3 move north
+alt + shift - l : yabai3 move east
+
+# Swapping windows in spaces: shift + lalt - {h, j, k, l}
+cmd + ctrl - h  : yabai -m window --swap west  || yabai -m window --swap last
+cmd + ctrl - j  : yabai -m window --swap south || yabai -m window --swap north
+cmd + ctrl - k  : yabai -m window --swap north || yabai -m window --swap south
+cmd + ctrl - l  : yabai -m window --swap east  || yabai -m window --swap first
+
+# move focused window to workspace
+alt + shift - 1 : yabai -m window --space 1
+alt + shift - 2 : yabai -m window --space 2
+alt + shift - 3 : yabai -m window --space 3
+alt + shift - 4 : yabai -m window --space 4
+alt + shift - 5 : yabai -m window --space 5
+alt + shift - 6 : yabai -m window --space 6
+alt + shift - 7 : yabai -m window --space 7
+alt + shift - 8 : yabai -m window --space 8
+alt + shift - 9 : yabai -m window --space 9
+
+# toggle split: alt - c
+alt - c         : yabai -m window --toggle split
+
+# Equalize size of windows: alt - z
+alt - z         : yabai -m space --balance
+
+# close focused window: alt - w
+# alt - w : yabai -m window --close
+
+# Make window zoom to fullscreen: shift + lalt - f
+alt - f         : yabai -m window --toggle zoom-fullscreen
+
+# Rotate windows 90 degrees: lalt - r
+alt - r         : yabai -m space --rotate 90
+
+# Mirror Space on X and Y Axis: shift + lalt - {x, y}
+# alt - x : yabai -m space --mirror x-axis
+# alt - y : yabai -m space --mirror y-axis
+
+# change space layout: alt - {e, s}
+alt - e         : yabai -m space --layout bsp
+alt - s         : yabai -m space --layout stack
+
+# toggle current window float: alt - t
+alt - t         : yabai -m window --toggle float
+
+# new window insertions
+alt - b         : yabai -m window --insert south 
+alt - v         : yabai -m window --insert east 
+
+## Insertion (shift + ctrl + lalt - ...)
+# Set insertion point for focused container: shift + ctrl + lalt - {h, j, k, l, s}
+# shift + ctrl + alt - h : yabai -m window --insert west
+# shift + ctrl + alt - j : yabai -m window --insert south
+# shift + ctrl + alt - k : yabai -m window --insert north
+# shift + ctrl + alt - l : yabai -m window --insert east
+# shift + ctrl + alt - s : yabai -m window --insert stack
+
+# -- disable some OSX built-in key mappings --
+# disable osx hide window
+cmd - h : :
+# disable osx minimize window
+alt + cmd - m : :
+cmd - m : :
+
+# Open new alacritty window: Hyper - a
+cmd - return    : alacritty msg create-window; open -a Alacritty
+
+cmd + shift - return : open -na "Brave Browser.app" --args --profile-directory=Default
+
+# close focused window: hyper - w
+# ctrl + alt + cmd - w : yabai -m window --close
+
+# restart yabai: ctrl + alt - 0
+ctrl + alt - 0 : yabai --restart-service
+
+# restart skhd: shift + ctrl + alt - 0
+shift + ctrl + alt - 0 : skhd --restart-service

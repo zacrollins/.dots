@@ -1,0 +1,126 @@
+# set user defined palette
+palette= "catppuccin_mocha"
+
+format = """
+$shell\
+$username\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$character"""
+right_format = """
+$time\
+$kubernetes\
+$azure"""
+
+[shell]
+powershell_indicator = '󰨊'
+zsh_indicator = '󰰶'
+style = 'bold rosewater'
+disabled = false
+
+# Configure the SSH prompt
+# [hostname]
+# ssh_only = true
+# prefix = "⟪"
+# suffix = "⟫"
+
+[directory]
+truncate_to_repo = true
+format = '[$path]($style)[$read_only]($read_only_style) '
+style = "bold lavender"
+read_only = " 󰌾"
+
+[time]
+disabled = false
+format = '  $time ($style) '
+use_12hr = true
+
+[character]
+success_symbol = "[](mauve)"
+error_symbol = "[](red)"
+# vimcmd_symbol = "[V](bold green)"
+vicmd_symbol = "[](green)"
+
+[git_branch]
+format = "[$branch]($style)"
+style = "flamingo"
+symbol = " "
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "maroon"
+conflicted = "  "
+deleted = " "
+modified = "  "
+stashed = "  "
+staged = "  "
+renamed = "  "
+untracked = "  "
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "peach"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[python]
+format = "[$virtualenv]($style) "
+style = "teal"
+symbol = " "
+
+[kubernetes]
+format = '[󱃾 $context \($namespace\)](dimmed green) '
+disabled = false
+contexts = [
+    { context_pattern = "idl-core-1-dev-aks", context_alias = "dev" },
+    { context_pattern = "idl-core-ops-aks", context_alias = "ops" },
+    { context_pattern = "idl-core-prod-aks", context_alias = "prod" },
+]
+
+[azure]
+disabled = false
+format = '[$symbol($subscription)]($style) '
+symbol = '󰠅 '
+style = 'blue'
+
+[azure.subscription_aliases]
+"DevTest Subscription" = 'DevTest'
+"Prod Subscription" = 'Prod'
+"Contract Manager- Prod Subscription" = 'CM'
+"Access to Azure Active Directory" = 'Access_AAD'
+"Optimization- Prod Subscription" = 'Optimization'
+
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"

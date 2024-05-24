@@ -1,0 +1,76 @@
+import = [
+    "/Users/zac/.config/alacritty/themes/catppuccin-mocha.toml"
+]
+
+live_config_reload = true
+
+[bell]
+animation = "EaseOutExpo"
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[window]
+padding.x = 25
+padding.y = 20
+
+decorations = "Buttonless"
+
+opacity = 0.8
+blur = true
+
+option_as_alt = "Both"
+
+[font]
+size = 16
+
+glyph_offset.x = 0
+glyph_offset.y = 1
+
+normal.family = "Hack Nerd Font"
+normal.style = "Regular"
+
+[mouse]
+hide_when_typing = false
+
+[scrolling]
+history = 50000
+
+[selection]
+save_to_clipboard = true
+
+[shell]
+args = ["--login"]
+program = "/bin/zsh"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Command"
+
+
