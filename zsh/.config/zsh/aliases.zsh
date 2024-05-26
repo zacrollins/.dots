@@ -126,6 +126,3 @@ ex() {
         echo "'$1' is not a valid file"
     fi
 }
-
-# dotfiles git alias
-alias dotfiles='git --git-dir=$HOME/dotfiles.git --work-tree=$HOME'
