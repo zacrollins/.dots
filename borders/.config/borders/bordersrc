@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+BINPATH="$(dirname "$0")"
+readonly BINPATH
+
+source "$BINPATH/../colors.sh"
+
+rgb_to_argb() {
+	rgb_color="$1"
+	argb_color="0xff${rgb_color:2}"
+	echo "$argb_color"
+}
+
+options=(
+  style=round
+  width=2.0
+  hidpi=off
+  active_color="$(rgb_to_argb $COLOR_MAGENTA)"
+  inactive_color="$(rgb_to_argb $COLOR_BACKGROUND)"
+)
+
+borders "${options[@]}"

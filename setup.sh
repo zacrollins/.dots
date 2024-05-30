@@ -4,6 +4,7 @@
 base=(
     alacritty
     bat
+    borders
     git
     powershell
     skhd

@@ -14,10 +14,14 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "zrmac"
-sudo scutil --set HostName "zrmac"
-sudo scutil --set LocalHostName "zrmac"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "zrmac"
+read -r -p "Enter ComputerName [default is zrmac]" cname
+cname=${cname:-zrmac}
+echo "Setting ComputerName to $cname"
+
+sudo scutil --set ComputerName "${cname}"
+sudo scutil --set HostName "${cname}"
+sudo scutil --set LocalHostName "${cname}"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "${cname}"
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
@@ -127,11 +131,11 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # Increase sound quality for Bluetooth headphones/headsets
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+# defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
-defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+# defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
 # defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
@@ -215,7 +219,7 @@ sudo systemsetup -setrestartfreeze on
 # defaults write com.apple.screensaver askForPassword -int 1
 # defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-# Save screenshots to the desktop
+# Save screenshots to ~/Pictures/screenshots/
 defaults write com.apple.screencapture location -string "${HOME}/Pictures/screenshots"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
@@ -383,7 +387,7 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 
 # Don’t group windows by application in Mission Control
 # (i.e. use the old Exposé behavior instead)
-defaults write com.apple.dock expose-group-by-app -bool false
+# defaults write com.apple.dock expose-group-by-app -bool false
 
 # Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true

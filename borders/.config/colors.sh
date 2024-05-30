@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Catppuccin Mocah color palette
+
+export COLOR_BACKGROUND=0x1e1e2e
+export COLOR_FOREGROUND=0xc0d6f4
+
+export COLOR_ACCENT=0x94e2d5
+export COLOR_ACCENT_BRIGHT=0xa6e3a1
+
+export COLOR_BLACK=0x45475a
+export COLOR_RED=0xf38ba8
+export COLOR_GREEN=0xa6e3a1
+export COLOR_YELLOW=0xf9e2af
+export COLOR_BLUE=0x89b4fa
+export COLOR_MAGENTA=0xf5c2e7
+export COLOR_CYAN=0x94e2d5
+export COLOR_WHITE=0xbac2de
+
+export COLOR_BLACK_BRIGHT=0x585B70
+export COLOR_RED_BRIGHT=0xf38ba8
+export COLOR_GREEN_BRIGHT=0xb8bb26
+export COLOR_YELLOW_BRIGHT=0xfabd2f
+export COLOR_BLUE_BRIGHT=0x89b4fa
+export COLOR_MAGENTA_BRIGHT=0xf5c2e7
+export COLOR_CYAN_BRIGHT=0x94e2d5
+export COLOR_WHITE_BRIGHT=0xbac2de
