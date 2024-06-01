@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+# regional settings
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
+
+# XDG directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+[ -d "$XDG_CONFIG_HOME" ] || mkdir -m 0750 "$XDG_CONFIG_HOME"
+[ -d "$XDG_CACHE_HOME" ]  || mkdir -m 0750 "$XDG_CACHE_HOME"
+[ -d "$XDG_DATA_HOME" ]   || mkdir -m 0750 "$XDG_DATA_HOME"
+[ -d "$XDG_STATE_HOME" ]  || mkdir -m 0750 "$XDG_STATE_HOME"
+
+# XDG user dirs
+export XDG_RUNTIME_DIR=~/.xdg
+export XDG_PROJECTS_DIR=~/src
+
+# if mac, source brew stuff
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  test -d /opt/homebrew && eval "$(/opt/homebrew/bin/brew shellenv)"
+  test -f /usr/local/bin/brew && eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# macOS
+[[ "$OSTYPE" == darwin* ]] && export BROWSER='open'
+[[ "$OSTYPE" == darwin* ]] && export SHELL_SESSIONS_DISABLE=1
+
+# history settings
+export HISTSIZE=20000
+export HISTFILE="$XDG_CACHE_HOME/bash_history"
+export HISTFILESIZE=15000000
+export HISTTIMEFORMAT='[%F %T] '
+export HISTIGNORE='pwd:jobs:ll:ls:l:history:c:clear'
+export HISTCONTROL=ignoreboth
+
+EDITOR=vim
+if hash nvim 2>/dev/null; then
+  export MANPAGER='nvim +Man!'
+  EDITOR=nvim
+fi
+export EDITOR
+export VISUAL="$EDITOR"
+
+export PAGER=less
+export LESS="-FiQMXR"
+export LESSCHARSET="UTF-8"
+
+# souce readline config
+export INPUTRC="$XDG_CONFIG_HOME/bash/inputrc"
+
+# Export the final PATH
+# export PATH
+
