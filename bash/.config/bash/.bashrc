@@ -12,6 +12,9 @@ set -o vi
 source "$XDG_CONFIG_HOME/bash/completion"
 source "$XDG_CONFIG_HOME/bash/aliases"
 
+# source fzf
+[[ -f "$XDG_CONFIG_HOME/bash/fzf.bash" ]] && source "$XDG_CONFIG_HOME/bash/fzf.bash"
+
 if [[ $DISPLAY ]]; then
   shopt -s checkwinsize  # Update LINES and COLUMNS after each command
 fi
