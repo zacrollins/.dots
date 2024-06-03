@@ -36,7 +36,7 @@ return {
 				hijack_netrw_behavior = "open_current",
 			},
 		})
-		vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal right toggle<CR>", {})
+		vim.keymap.set("n", "<C-e>", ":Neotree filesystem reveal right toggle<CR>", {})
 		vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
 	end,
 }
