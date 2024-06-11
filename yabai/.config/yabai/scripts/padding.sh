@@ -4,7 +4,7 @@ windowcount=$(yabai -m query --windows --space | jq -r '[ .[] | select(."is-floa
 case "${windowcount}" in
         "1")
                 display=$( yabai -m query --displays --space | jq )
-                width=$( echo $display | jq '.frame.w')
+                width=$( echo "$display" | jq '.frame.w')
                 if [[ "${width}" == "3840.0000" ]]; then
                         yabai -m space --padding abs:20:10:400:400
                         yabai -m space --balance

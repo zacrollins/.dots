@@ -26,6 +26,6 @@ setup_space 2 term
 setup_space 3 code
 setup_space 4 code2
 setup_space 5 code3
-setup_space 6 w
-setup_space 7 w2
+setup_space 6 
+setup_space 7 
 setup_space 8 comm

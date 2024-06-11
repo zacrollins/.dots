@@ -55,7 +55,7 @@ yabai -m config                             \
 
 # -- SETUP SPACES --
 
-$HOME/.config/yabai/scripts/setup_spaces.sh
+"$HOME"/.config/yabai/scripts/setup_spaces.sh
 
 # -- RULES --
 

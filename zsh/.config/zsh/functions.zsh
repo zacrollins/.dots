@@ -26,6 +26,17 @@ brewup() {
     printf "${TEXTCOLOR}Checking for issues...\n"
     brew doctor
 }
+
+yy() {
+  # yazi wrapper
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 fcd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
@@ -36,7 +47,8 @@ fcd() {
 #     local dir
 #     dir=$(find ${1:-.} -type d -not -path '*/\.*' 2> /dev/null | fzf +m && cd "$dir"
 # }
-#
+
 devvm_start() {
     az vm start -g wu2-idl-zrdevbox-dev-rg -n zrDevBox-vm1
 }
+

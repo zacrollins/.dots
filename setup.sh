@@ -17,6 +17,7 @@ nofold=(
   powershell
   scripts
   zsh
+  yazi
 )
 
 # run the stow command for the passed in directory ($2) in location $1
@@ -57,15 +58,16 @@ echo "##### ALL DONE"
 
 # manual stow each package
 #
-# stow -v -R -S alacritty
-# stow -v -R -S bat
-# stow -v -R -S borders
-# stow -v -R -S git
-# stow -v -R --no-folding -S powershell 
-# stow -v -R -S skhd
-# stow -v -R -S starship
-# stow -v -R -S tmux
-# stow -v -R -S yabai
-# stow -v -R --no-folding -S nvim
-# stow -v -R --no-folding -S scripts
-# stow -v -R --no-folding -S zsh
+# stow -v -R -t "$HOME" -S alacritty
+# stow -v -R -t "$HOME" -S bat
+# stow -v -R -t "$HOME" -S borders
+# stow -v -R -t "$HOME" -S git
+# stow -v -R --no-folding -t "$HOME" -S powershell 
+# stow -v -R -t "$HOME" -S skhd
+# stow -v -R -t "$HOME" -S starship
+# stow -v -R -t "$HOME" -S tmux
+# stow -v -R -t "$HOME" -S yabai
+# stow -v -R --no-folding -t "$HOME" -S nvim
+# stow -v -R --no-folding -t "$HOME" -S scripts
+# stow -v -R --no-folding -t "$HOME" -S zsh
+# stow -v -R --no-folding -t "$HOME" -S yazi

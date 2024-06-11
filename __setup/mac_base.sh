@@ -47,6 +47,7 @@ declare -a brews=(
     'docker-credential-helper'
     'eza'
     'fd'
+    'ffmpegthumbnailer'
     'fnm'
     'fx'
     'fzf'
@@ -58,6 +59,7 @@ declare -a brews=(
     'kubernetes-cli'
     'neovim'
     'openssl'
+    'poppler'
     'reattach-to-user-namespace'
     'readline'
     'ripgrep'
@@ -67,9 +69,11 @@ declare -a brews=(
     'tlrc'
     'tmux'
     'trash'
+    'unar'
     'watch'
     'wget'
     'yabai'
+    'yazi'
     'yq'
     'zoxide'
     'zsh'
@@ -94,12 +98,13 @@ declare -a cask_apps=(
     'brave-browser'
     'doll'
     'dotnet-sdk'
-    "font-caskaydia-cove-nerd-font"
-    "font-fira-code-nerd-font"
-    "font-hack-nerd-font"
-    "font-iosevka-nerd-font"
-    "font-jetbrains-mono-nerd-font"
-    "font-meslo-lg-nerd-font"
+    'font-caskaydia-cove-nerd-font'
+    'font-fira-code-nerd-font'
+    'font-hack-nerd-font'
+    'font-iosevka-nerd-font'
+    'font-jetbrains-mono-nerd-font'
+    'font-meslo-lg-nerd-font'
+    'font-symbols-only-nerd-font'
     'git-credential-manager'
     'google-chrome'
     'hammerspoon'
