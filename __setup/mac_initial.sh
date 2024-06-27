@@ -31,14 +31,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-read -r -p "Enter ComputerName [default is zrmac]" cname
-cname=${cname:-zrmac}
-echo "Setting ComputerName to $cname"
-
-sudo scutil --set ComputerName "${cname}"
-sudo scutil --set HostName "${cname}"
-sudo scutil --set LocalHostName "${cname}"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "${cname}"
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
@@ -156,6 +148,9 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
 sudo systemsetup -settimezone "America/Denver" > /dev/null
+
+# Set Function keys to standard function keys
+defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 
 # Stop iTunes from responding to the keyboard media keys
 #launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null

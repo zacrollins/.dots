@@ -35,6 +35,12 @@ else
     alias ..="cd .."
 fi
 
+# vim less (user nvim as less for syntax highlight)
+alias vimless='/usr/share/nvim/runtime/macros/less.sh'
+
+# search files with preview
+alias files='fzf -m --preview="bat --style=numbers --color=always {}"'
+
 # alacritty new window
 alias alacritty-new='alacritty msg create-window; open -a Alacritty'
 

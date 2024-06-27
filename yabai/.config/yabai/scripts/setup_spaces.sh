@@ -2,7 +2,7 @@
 
 # setup spaces
 
-SPACES=8
+SPACES=9
 for _ in $(yabai -m query --spaces | jq ".[].index | select(. > $SPACES)"); do
   yabai -m space --destroy "$((SPACES+1))"
 done
@@ -26,6 +26,7 @@ setup_space 2 term
 setup_space 3 code
 setup_space 4 code2
 setup_space 5 code3
-setup_space 6 
-setup_space 7 
+setup_space 6 a
+setup_space 7 b
 setup_space 8 comm
+setup_space 9 builtin

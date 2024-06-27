@@ -116,11 +116,17 @@ else {
 # ----------------
 #region PSReadline
 # ----------------
+# set vi mode
+Set-PSReadlineOption -EditMode Vi
+
 # general
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 
+Set-PSReadLineKeyHandler -Chord Tab -Function Complete
+
 # Menu Complete for tab completion is really nice and gives you parameter information during selection.
-Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+# Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd:$true
 
 # add auto prediction
@@ -128,17 +134,19 @@ Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadLineOption -MaximumHistoryCount 1000
 
 # emacs cursor movements
-Set-PSReadLineKeyHandler -Key Ctrl+a -Function BeginningOfLine
-Set-PSReadLineKeyHandler -Key Ctrl+e -Function EndOfLine
-Set-PSReadLineKeyHandler -Key Ctrl+u -Function RevertLine
+# Set-PSReadLineKeyHandler -Key Ctrl+a -Function BeginningOfLine
+# Set-PSReadLineKeyHandler -Key Ctrl+e -Function EndOfLine
+# Set-PSReadLineKeyHandler -Key Ctrl+u -Function RevertLine
 
+# PS FZF
+if (!(Get-Module PSFzf -ListAvailable)) {
+   Find-PSResource PSFzf | Install-PSResource 
+}
+Remove-PSReadLineKeyHandler 'Ctrl+r'
+Remove-PSReadLineKeyHandler 'Ctrl+t'
+Import-Module PSFzf
 
-#if (!(Get-Module PSFzf -ListAvailable)) {
-#    Find-Module PSFzf | Install-Module
-#}
-#Remove-PSReadLineKeyHandler 'Ctrl+r'
-#Remove-PSReadLineKeyHandler 'Ctrl+t'
-#Import-Module PSFzf
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 
 #endregion PSReadline
 

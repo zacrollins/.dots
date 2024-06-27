@@ -87,7 +87,7 @@ return {
         yamlls = {},
         powershell_es = {},
         helm_ls = {},
-        gopls = {},
+        -- gopls = {},
         marksman = { filetypes = { 'md', 'markdown' } },
         lua_ls = {
           -- cmd = {...},

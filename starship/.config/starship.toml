@@ -16,6 +16,8 @@ $time\
 $kubernetes\
 $azure"""
 
+command_timeout = 1000
+
 [shell]
 powershell_indicator = '󰨊'
 zsh_indicator = '󰰶'
