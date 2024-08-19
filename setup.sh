@@ -68,6 +68,7 @@ echo "##### ALL DONE"
 # stow -v -R -t "$HOME" -S tmux
 # stow -v -R -t "$HOME" -S yabai
 # stow -v -R --no-folding -t "$HOME" -S nvim
+# stow -v -R --no-folding -t "$HOME" -S nvim-lazyvim
 # stow -v -R --no-folding -t "$HOME" -S scripts
 # stow -v -R --no-folding -t "$HOME" -S zsh
 # stow -v -R --no-folding -t "$HOME" -S yazi

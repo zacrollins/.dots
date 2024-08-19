@@ -3,3 +3,7 @@
 .git/
 .zsh_history
 .zcompdump
+
+# colima stuff
+_lima/
+*.sock

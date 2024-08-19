@@ -7,6 +7,9 @@ su() {
     fi
 }
 
+# get shell builtin help
+help () {sh -c "help $*"}
+
 brewup() {
     # brewup: update brew and upgrade all brew packages
 

@@ -141,9 +141,10 @@ alt + cmd - m : :
 cmd - m : :
 
 # Open new alacritty window: Hyper - a
-cmd - return    : alacritty msg create-window; open -a Alacritty
+# cmd - return    : alacritty msg create-window; open -a Alacritty
+cmd + shift - return: alacritty msg create-window; open -a Alacritty
 
-cmd + shift - return : open -na "Brave Browser.app" --args --profile-directory=Default
+# cmd + shift - return : open -na "Brave Browser.app" --args --profile-directory=Default
 
 # close focused window: hyper - w
 # ctrl + alt + cmd - w : yabai -m window --close

@@ -35,6 +35,15 @@ else
     alias ..="cd .."
 fi
 
+# navigation
+cx() { cd "$@" && l; }
+# fcd() { cd "$(find . -type d -not -path '*/.*' | fzf)" && l; }
+# f() { echo "$(find . -type f -not -path '*/.*' | fzf)" | pbcopy }
+# fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
+
+# ssh alacritty TERM workaround
+alias ssha='TERM=xterm-256color ssh'
+
 # vim less (user nvim as less for syntax highlight)
 alias vimless='/usr/share/nvim/runtime/macros/less.sh'
 
@@ -78,6 +87,9 @@ alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
 
+# alternate lazyvim config
+alias lazyvim='NVIM_APPNAME=nvim-lazyvim nvim'
+
 # exit
 alias e='exit'
 
@@ -96,6 +108,9 @@ alias gl='git log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\
 
 # netstat
 alias port="netstat -tulpn | grep"
+
+# flush dns
+alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 # code
 alias code='code-insiders'
