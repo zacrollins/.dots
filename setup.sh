@@ -72,3 +72,4 @@ echo "##### ALL DONE"
 # stow -v -R --no-folding -t "$HOME" -S scripts
 # stow -v -R --no-folding -t "$HOME" -S zsh
 # stow -v -R --no-folding -t "$HOME" -S yazi
+# stow -v -R --no-folding -t "$HOME" -S colima
