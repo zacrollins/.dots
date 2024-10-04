@@ -7,14 +7,20 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed
 -- vim.g.have_nerd_font = true
 
--- [[ Install `lazy.nvim` plugin manager ]]
-require('lazy-bootstrap')
+if vim.g.vscode then
+  -- VSCode Neovim config
+  require "vscode_keymaps"
 
--- [[ Setting options ]]
-require('options')
+else
+  -- [[ Install `lazy.nvim` plugin manager ]]
+  require('lazy-bootstrap')
 
--- [[ Basic Keymaps ]]
-require('keymaps')
+  -- [[ Setting options ]]
+  require('options')
 
--- [[ Configure plugins ]]
-require('lazy').setup('plugins')
+  -- [[ Basic Keymaps ]]
+  require('keymaps')
+
+  -- [[ Configure plugins ]]
+  require('lazy').setup('plugins')
+end

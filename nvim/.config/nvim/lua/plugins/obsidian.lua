@@ -58,7 +58,9 @@ return {
       -- },
     },
 
-    new_notes_location = "current_dir",
+    ui = { enable = false },
+
+    new_notes_location = "zk",
 
     wiki_link_func = function(opts)
       if opts.id == nil then

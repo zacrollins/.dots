@@ -116,7 +116,17 @@ alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias code='code-insiders'
 
 # kubectl
-alias k='kubectl'
+if command -v kubectl 2>&1 >/dev/null; then    
+    alias k='kubectl'
+fi
+
+if command -v kubectx 2>&1 >/dev/null; then
+    alias kctx='kubectx'
+fi
+
+if command -v kubens 2>&1 >/dev/null; then
+    alias kns='kubens'
+fi
 
 # azure cli
 alias devsub='az account set --subscription "DevTest Subscription"; az account show'

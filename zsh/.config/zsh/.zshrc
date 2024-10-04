@@ -52,10 +52,6 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 ############################################
 [ -f $ZDOTDIR/integrations/brew.zsh ] && source $ZDOTDIR/integrations/brew.zsh
 
-# fzf integration
-############################################
-[ -f $ZDOTDIR/integrations/fzf.zsh ] && source $ZDOTDIR/integrations/fzf.zsh
-
 # az cli completion (bash only)
 ############################################
 autoload bashcompinit && bashcompinit
@@ -74,15 +70,17 @@ eval "$(zoxide init zsh)"
 
 # ZSH syntax highlighting
 #############################################
-# source $(brew --prefix)/Cellar/zsh-syntax-highlighting/0.7.1/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# ZSH auto suggestions
-#############################################
-# source $(brew --prefix)/Cellar/zsh-autosuggestions/0.7.0/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # ZSH Vi Mode
 #############################################
-# source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# run after zsh vi mode is initialized
+function zvm_after_init() {
+    # fzf shell integration
+    source <(fzf --zsh)
+    # ZSH auto suggestions
+    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+}
 source $(brew --prefix)/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # TMUX
