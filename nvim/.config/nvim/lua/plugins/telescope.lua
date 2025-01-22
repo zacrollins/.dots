@@ -1,4 +1,11 @@
 return {
+  {
+    'nvim-telescope/telescope-file-browser.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('telescope').load_extension 'file_browser'
+    end
+  },
 	{ -- Fuzy Finder
 		'nvim-telescope/telescope.nvim',
 		event = 'VimEnter',
@@ -14,6 +21,7 @@ return {
 			},
 			{	'nvim-telescope/telescope-ui-select.nvim' },
 			{ 'nvim-tree/nvim-web-devicons' },
+      { 'nvim-telescope/telescope-file-browser.nvim' },
 		},
 		config = function()
 			-- [[ Configure Telescope ]]
@@ -46,12 +54,16 @@ return {
             case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
                                              -- the default case_mode is "smart_case"
           },
+          file_browser = {
+            hijack_netrw = true,
+          }
 				},
 			}
 
 			-- Enable telescope extensions, if installed
 			pcall(require('telescope').load_extension, 'fzf')
 			pcall(require('telescope').load_extension, 'ui-select')
+			pcall(require('telescope').load_extension, 'file_browser')
 
 			-- See `:help telescope.builtin`
 			local builtin = require 'telescope.builtin'
@@ -73,6 +85,7 @@ return {
         }
       end, { desc = '[S]earch [/] in Open Files' })
 
+      vim.keymap.set('n', '<leader>fb',   ':Telescope file_browser<CR>', { desc = '[F]ile [B]rowser' })
 			-- vim.keymap.set('n', '<leader>gf',    builtin.git_files,   { desc = 'Search [G]it [F]iles' })
 			vim.keymap.set('n', '<leader>sd',    builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 			vim.keymap.set('n', '<leader>sf',    builtin.find_files,  { desc = '[S]earch [F]iles' })

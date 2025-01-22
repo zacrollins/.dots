@@ -142,7 +142,8 @@ cmd - m : :
 
 # Open new alacritty window: Hyper - a
 # cmd - return    : alacritty msg create-window; open -a Alacritty
-cmd + shift - return: alacritty msg create-window; open -a Alacritty
+cmd + shift - return: open -na WezTerm
+# cmd + shift - return: alacritty msg create-window; open -a Alacritty
 
 # cmd + shift - return : open -na "Brave Browser.app" --args --profile-directory=Default
 

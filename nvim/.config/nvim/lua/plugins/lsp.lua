@@ -7,7 +7,11 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
+      -- schema store plugin
+      'b0o/schemastore.nvim',
 
+      -- helm plugin to start yamlls for helm files
+      { 'towolf/vim-helm',  ft = 'helm' },
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
@@ -84,11 +88,46 @@ return {
       local servers = {
         bashls = {},
         bicep = {},
-        yamlls = {},
+        jsonls = {
+          settings = {
+            json = {
+              schemas = require('schemastore').json.schemas(),
+              validate = { enable = true },
+            },
+          },
+        },
+        yamlls = {
+          settings = {
+            yaml = {
+              format = {
+                enable = true,
+                singleQuote = true,
+                printWidth = 120,
+              },
+              validate = true,
+              completion = true,
+              schemaStore = {
+                enabled = false,
+                url = '',
+              },
+              schemas = require('schemastore').yaml.schemas(),
+            },
+          },
+        },
         powershell_es = {},
-        helm_ls = {},
+        helm_ls = {
+          settings = {
+            ['helm-ls'] = {
+              yamlls = {
+                path = "yaml-language-server",
+              },
+            },
+          },
+        },
         -- gopls = {},
         marksman = { filetypes = { 'md', 'markdown' } },
+        terraformls = {},
+        tflint = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},

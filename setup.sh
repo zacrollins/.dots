@@ -62,10 +62,12 @@ echo "##### ALL DONE"
 # stow -v -R -t "$HOME" -S bat
 # stow -v -R -t "$HOME" -S borders
 # stow -v -R -t "$HOME" -S git
+# stow -v -R --no-folding -t "$HOME" -S k9s
 # stow -v -R --no-folding -t "$HOME" -S powershell 
 # stow -v -R -t "$HOME" -S skhd
 # stow -v -R -t "$HOME" -S starship
 # stow -v -R -t "$HOME" -S tmux
+# stow -v -R -t "$HOME" -S wezterm
 # stow -v -R -t "$HOME" -S yabai
 # stow -v -R --no-folding -t "$HOME" -S nvim
 # stow -v -R --no-folding -t "$HOME" -S nvim-lazyvim

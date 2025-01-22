@@ -113,11 +113,15 @@ alias port="netstat -tulpn | grep"
 alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 # code
-alias code='code-insiders'
+# alias code='code-insiders'
 
 # kubectl
-if command -v kubectl 2>&1 >/dev/null; then    
-    alias k='kubectl'
+if command -v kubectl 2>&1 >/dev/null; then
+    if command -v kubecolor 2>&1 >/dev/null; then
+        alias k='kubecolor'
+    else
+        alias k='kubectl'
+    fi
 fi
 
 if command -v kubectx 2>&1 >/dev/null; then

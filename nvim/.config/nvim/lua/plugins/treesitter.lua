@@ -29,6 +29,8 @@ return {
         "yaml",
         "go",
         "bicep",
+        "hcl",
+        "terraform",
       },
       sync_install = true,
       ignore_install = {},

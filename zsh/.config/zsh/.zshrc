@@ -114,6 +114,9 @@ source $(brew --prefix)/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 #   fi
 # fi
 
+# direnv hook
+eval "$(direnv hook zsh)"
+
 # Starship Prompt
 #############################################
 eval "$(starship init zsh)"

@@ -39,7 +39,8 @@ focus() {
     north|south)
       yabai -m window --focus $stack_dir[$dir] || \
         yabai -m window --focus $dir || \
-        yabai -m window --focus $stack_wrap[$dir]
+        yabai -m window --focus $stack_wrap[$dir] || \
+        yabai -m display --focus $dir
       ;;
     *)
       err "focus: unknown direction ${dir}"

@@ -98,10 +98,11 @@ sticky_float_apps="(Finder|Authy Desktop|1Password|Preview|Calculator|System Inf
 yabai -m rule --add app="^${sticky_float_apps}$" sticky=on manage=off
 
 # Comunication Apps
-comm_apps="(Microsoft Teams|Microsoft Teams classic|Microsoft Teams (work or school)|Slack|Microsoft Outlook)"
+comm_apps="(Microsoft Teams|Microsoft Teams classic|Microsoft Teams (work or school)|MSTeams|Slack|Microsoft Outlook)"
 yabai -m rule --add app="^${comm_apps}.*$" space=8
 
 yabai -m rule --add app="^Microsoft Teams$" title="^Microsoft Teams Notification$" manage=off
+yabai -m rule --add app="^Microsoft Teams$" title="^Meeting compact view*" manage=off
 
 yabai -m rule --add app="^Arc$" title="^Zac$" manage=off
 
