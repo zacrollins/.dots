@@ -61,6 +61,7 @@ echo "##### ALL DONE"
 # stow -v -R -t "$HOME" -S alacritty
 # stow -v -R -t "$HOME" -S bat
 # stow -v -R -t "$HOME" -S borders
+# stow -v -R -t "$HOME" -S ghostty
 # stow -v -R -t "$HOME" -S git
 # stow -v -R --no-folding -t "$HOME" -S k9s
 # stow -v -R --no-folding -t "$HOME" -S powershell 

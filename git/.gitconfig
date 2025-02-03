@@ -26,7 +26,7 @@
     # mac/linux system
     autocrlf = input
 
-	# use custom `.gitignore` and `.gitattributes`
+    # use custom `.gitignore` and `.gitattributes`
     excludesfile = ~/.config/git/gitignore_global
     attributesfile = ~/.config/git/gitattributes_global
 

@@ -18,8 +18,8 @@ max_height      = 900
 
 [opener]
 edit = [
-	{ run = '${EDITOR:=nvim} "$@"', desc = "$EDITOR", block = true, for = "unix" },
-	{ run = 'code "$@"',            desc = "code",    orphan = true },
+	{ run = '${EDITOR:=nvim} "$@"', desc = "$EDITOR", block = true,  for = "unix" },
+	{ run = 'code %*',							desc = "code",    orphan = true, for = "windows" },
 ]
 open = [
 	{ run = 'xdg-open "$@"',                desc = "Open", for = "linux" },
