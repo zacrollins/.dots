@@ -8,7 +8,7 @@ su() {
 }
 
 # get shell builtin help
-help () {sh -c "help $*"}
+help() {sh -c "help $*"}
 
 brewup() {
     # brewup: update brew and upgrade all brew packages
@@ -31,20 +31,20 @@ brewup() {
 }
 
 yy() {
-  # yazi wrapper
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+    # yazi wrapper
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
 }
 
 fcd() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
-  cd "$dir"
+    local dir
+    dir=$(find ${1:-.} -path '*/\.*' -prune \
+        -o -type d -print 2>/dev/null | fzf +m) &&
+        cd "$dir"
 }
 # fcd() {
 #     local dir
@@ -54,4 +54,3 @@ fcd() {
 devvm_start() {
     az vm start -g wu2-idl-zrdevbox-dev-rg -n zrDevBox-vm1
 }
-

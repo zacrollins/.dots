@@ -82,7 +82,7 @@ yabai -m signal --add event=space_changed action='cur_msteams_wid=$(yabai -m que
 yabai -m signal --add event=window_created action='yabai -m query --windows --window $YABAI_WINDOW_ID | jq -e ".\"can-resize\"" || yabai -m window $YABAI_WINDOW_ID --toggle float' app="Microsoft Teams"
 
 # Exclude problematic apps from being managed:
-float_apps="(Karabiner-Elements|Software Update|Dictionary|System Preferences|System Settings|Archive Utility|App Store|Activity Monitor|Asana|OneDrive|VIA|Barracuda VPN Client|Homerow|Disk Utility|Doll|USB Crash Cart Adapter|balenaEtcher|KeyCastr|Raycast)"
+float_apps="(Karabiner-Elements|Software Update|Dictionary|System Preferences|System Settings|Archive Utility|App Store|Activity Monitor|Asana|OneDrive|VIA|Barracuda VPN Client|Homerow|Disk Utility|Doll|USB Crash Cart Adapter|balenaEtcher|KeyCastr|Raycast|Tailscale)"
 yabai -m rule --add app="^${float_apps}$" manage=off
 
 # MS Remote Desktop/Windows App

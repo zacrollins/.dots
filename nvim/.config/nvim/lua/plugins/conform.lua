@@ -1,10 +1,10 @@
 return {
   { -- Autoformat
     'stevearc/conform.nvim',
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
     keys = {
       {
-        '<leader>f',
+        '<leader>F',
         function()
           require('conform').format { async = true, lsp_fallback = true }
         end,
@@ -14,8 +14,19 @@ return {
     },
     opts = {
       formatters_by_ft = {
-        -- lua = { 'stylua' },
-        -- javascript = { { "prettierd", "prettier" } },
+        lua = { 'stylua' },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        css = { "prettier" },
+        html = { "prettier" },
+        json = { "prettier" },
+        yaml = { "prettier" },
+        markdown = { "prettier" },
+        sh = { "shfmt" },
+        bash = { "shfmt" },
+        zsh = { "shfmt" },
+        go = { "gofumpt" },
+        bicep = { "bicep" },
       },
     },
   },

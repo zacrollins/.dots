@@ -11,7 +11,7 @@
 
 [core]
     # command for interactive edit window
-    editor = code --wait
+    editor = "nvim"
 
     # controls how git will handle line endings
 	# can be:
