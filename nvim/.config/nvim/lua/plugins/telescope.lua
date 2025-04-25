@@ -6,7 +6,7 @@ return {
       require('telescope').load_extension 'file_browser'
     end
   },
-	{ -- Fuzy Finder
+	{ -- Fuzzy Finder
 		'nvim-telescope/telescope.nvim',
 		event = 'VimEnter',
 		branch = '0.1.x',
@@ -20,7 +20,7 @@ return {
 				end,
 			},
 			{	'nvim-telescope/telescope-ui-select.nvim' },
-			{ 'nvim-tree/nvim-web-devicons' },
+			{ 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
       { 'nvim-telescope/telescope-file-browser.nvim' },
 		},
 		config = function()
@@ -95,7 +95,9 @@ return {
 			vim.keymap.set('n', '<leader>sr',    builtin.resume,      { desc = '[S]earch [R]esume' })
 			vim.keymap.set('n', '<leader>ss',    builtin.builtin,     { desc = '[S]earch [S]elect Telescope' })
 			vim.keymap.set('n', '<leader>sw',    builtin.grep_string, { desc = '[S]earch current [W]ord' })
+      vim.keymap.set('n', '<leader>s.',    builtin.oldfiles,    { desc = '[S]earch Recent Files ("." for repeat)' })
 			vim.keymap.set('n', '<leader><tab>', builtin.commands,    { desc = 'Options through Telescope'})
+			vim.keymap.set('n', '<leader><leader>', builtin.buffers,  { desc = '[ ] Find existing buffers'})
 		end,
 	},
 }

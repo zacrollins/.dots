@@ -1,0 +1,29 @@
+# drop to shell
+[[manager.prepend_keymap]]
+on	= [ "<C-s>" ]
+run	= 'shell "$SHELL" --block --confirm'
+desc	= "Open shell here"
+
+# Close input by once Esc press
+[[input.prepend_keymap]]
+on	= [ "<Esc>" ]
+run	= "close"
+desc	= "Cancel input"
+
+# Smart enter: enter for directory, open for file
+[[manager.prepend_keymap]]
+on	= [ "l" ]
+run	= "plugin smart-enter"
+desc	= "Enter the child directory, or open the file"
+
+# Smart paste: paste files without entering the directory
+[[manager.prepend_keymap]]
+on	= [ "p" ]
+run	= "plugin smart-paste"
+desc	= "Paste into the hovered directory or CWD"
+
+# Show git file changes
+[[manage.prepend_keymap]]
+on	= [ "g", "s" ]
+run	= "plugin vcs-files"
+desc	= "Show Git file changes"

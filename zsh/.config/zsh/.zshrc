@@ -33,6 +33,9 @@ setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
 
+# set wordchars, remove / - _ .
+WORDCHARS="*?[]~=&;!#$%^(){}<>"
+
 # set to emacs mode
 # bindkey -e
 
@@ -57,6 +60,10 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 autoload bashcompinit && bashcompinit
 source $(brew --prefix)/etc/bash_completion.d/az
 
+# op cli completion
+############################################
+eval "$(op completion zsh)"; compdef _op op
+
 # fnm fast node manager
 ############################################
 eval "$(fnm env --use-on-cd)"
@@ -67,6 +74,12 @@ eval "$(fnm env --use-on-cd)"
 
 # Zoxide init
 eval "$(zoxide init zsh)"
+
+# jq zsh plugin
+#############################################
+[ -f $ZDOTDIR/plugins/jq-zsh-plugin/jq.plugin.zsh ] && source $ZDOTDIR/plugins/jq-zsh-plugin/jq.plugin.zsh
+
+bindkey '^[,' jq-complete
 
 # ZSH syntax highlighting
 #############################################

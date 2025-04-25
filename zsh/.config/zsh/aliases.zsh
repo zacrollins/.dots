@@ -88,7 +88,9 @@ alias vi='nvim'
 alias v='nvim'
 
 # alternate lazyvim config
-alias lazyvim='NVIM_APPNAME=nvim-lazyvim nvim'
+# alias lazyvim='NVIM_APPNAME=nvim-lazyvim nvim'
+# alternative kickstart config
+alias nvim-kickstart='NVIM_APPNAME=nvim-kickstart" nvim'
 
 # exit
 alias e='exit'
@@ -100,11 +102,25 @@ alias tls='t ls'
 alias tn='t new -t'
 
 # git
+alias g='git'
+alias gb='git branch' # + branch name
+alias gcm='git commit -m' # + commit message
+alias gco='git checkout' # + branch name
+alias gcob='git checkout -b' # + new branch name
+alias gl='git lg'
+alias ghist='git hist'
 alias gs='git status'
-alias gss='git status -s'
-alias ga='git add'
-alias gp='git push'
-alias gl='git log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short' # A nicer Git Log
+alias ga='git add' # + . for all, or each file/dir explicitly
+alias gl='git pull' # + remote & branch names
+alias glo='git pull origin' # + branch name
+alias gp='git push' # + remote & branch names
+alias gpo='git push origin' # + branch name
+
+# jump to git repo root
+alias gr='cd $(git rev-parse --show-toplevel)'
+
+# lazygit
+alias lg='lazygit'
 
 # netstat
 alias port="netstat -tulpn | grep"

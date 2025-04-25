@@ -1,8 +1,13 @@
 --
--- KEYMAPS
+-- [[ KEYMAPS ]]
 --
 -- See `:help vim.keymap.set()`
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR><esc>', { desc = "Clear hlsearch and ESC" })
+
+-- vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -16,33 +21,48 @@ vim.keymap.set("n", "WW", ":w!<enter>", { noremap = false })
 vim.keymap.set("i", "jk", "<Esc>")
 
 -- Move selected lines up and down
-vim.keymap.set("v", "<S-Down>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<S-Up>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<S-Down>", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
+vim.keymap.set("v", "<S-Up>", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })
 
 -- indent lines
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- Remap for yanking and pasting from the system clipboard
-vim.keymap.set({ "n", "v" }, "<Space>y", '"+y')
-vim.keymap.set("n", "<Space>Y", '"+Y', { silent = true })
-vim.keymap.set({ "n", "v" }, "<Space>p", '"+p', { silent = true })
-vim.keymap.set({ "n", "v" }, "<Space>P", '"+P', { silent = true })
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+vim.keymap.set({ "n"      }, "<leader>Y", '"+Y', { silent = true, desc = "Yank line to system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { silent = true, desc = "Paste on next line" })
+vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { silent = true, desc = "Past above current line" })
 
 -- Get out of terminal mode easier
-vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]])
-vim.keymap.set("n", "<leader>tt", ":lua require('FTerm').toggle()<CR>", { noremap = true })
-vim.keymap.set("t", "<leader>tt", "<C-\\><C-n>:lua require('FTerm').toggle()<CR>", { noremap = true })
--- vim.keymap.set('n', '<leader>t', ':ToggleTerm name=scratch direction=float<CR>', { desc = 'Toggle floating terminal'})
+vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = 'Exit terminal mode' })
 
 -- Noice
-vim.keymap.set("n", "<leader>nn", ":NoiceDismiss<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>nn", ":NoiceDismiss<CR>", { noremap = true , desc = "Dismiss Noice notifications" })
+
+--- highligh line number according to diagnostics
+vim.diagnostic.config({
+  signs = {
+    -- text = {
+    --   [vim.diagnostic.severity.ERROR] = "",
+    --   [vim.diagnostic.severity.WARN] = "",
+    --   [vim.diagnostic.severity.INFO] = "",
+    --   [vim.diagnostic.severity.HINT] = "",
+    -- },
+    numhl = {
+      [vim.diagnostic.severity.WARN] = "WarningMsg",
+      [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+      [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+      [vim.diagnostic.severity.HINT] = "DiagnosticHint",
+    },
+  },
+})
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+vim.keymap.set("n", "<leader>dj", function() vim.diagnostic.jump({ count = 1}) end, { desc = "Next [d]iagnostic [j]" })
+vim.keymap.set("n", "<leader>dk", function() vim.diagnostic.jump({ count = -1}) end, { desc = "Prev [d]iagnostic [k]" })
+vim.keymap.set("n", "<leader>dl", function() vim.diagnostic.open_float() end, { desc = "Toggle current [d]iagnostic [l]ist" })
+vim.keymap.set("n", "<leader>dq", function() vim.diagnostic.setqflist() end, { desc = "Open [d]iag [q]uickfix list" })
 
 -- Navigate vim panes better
 vim.keymap.set("n", "<c-k>", ":wincmd k<CR>", { desc = "Move focus to the upper window" })

@@ -134,9 +134,10 @@ Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadLineOption -MaximumHistoryCount 1000
 
 # emacs cursor movements
-# Set-PSReadLineKeyHandler -Key Ctrl+a -Function BeginningOfLine
-# Set-PSReadLineKeyHandler -Key Ctrl+e -Function EndOfLine
-# Set-PSReadLineKeyHandler -Key Ctrl+u -Function RevertLine
+Set-PSReadLineKeyHandler -ViMode Insert -Key Ctrl+a -Function BeginningOfLine
+Set-PSReadLineKeyHandler -ViMode Insert -Key Ctrl+e -Function EndOfLine
+Set-PSReadLineKeyHandler -ViMode Insert -Key Ctrl+u -Function RevertLine
+Set-PSReadLineKeyHandler -ViMode Insert -Key Ctrl+w -Function BackwardKillWord
 
 # PS FZF
 if (!(Get-Module PSFzf -ListAvailable)) {

@@ -1,0 +1,44 @@
+-- --------------
+-- zr psql config 
+-- --------------
+
+-- Hide confirmation messages
+\set QUIET on
+
+\set VERBOSITY verbose
+\x auto
+
+\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTCONTROL ignoredups
+\set HISTSIZE 9000
+
+-- unicode for borders
+\pset linestyle unicode
+--\pset unicode_border_linestyle single
+--\pset unicode_column_linestyle single
+--\pset unicode_header_linestyle double
+
+-- set null char
+\pset null '¤'
+
+/* psql escape codes:
+%M - full host + domain for db server, or [local] (if over Unix socket), or [local:/dir/name]
+%m - host name of the db server, truncated at the first dot, or [local] (if over Unix socket) -- do not use %m, because IP will be truncated!
+%> - port where db server is listening
+%n - database session user name (changes based on SET SESSION AUTHORIZATION)
+%/ - current database name
+%~ - like %/ but the output is ~ if the database is the default
+%# - # if user is superuser, else > (changes based on SET SESSION AUTHORIZATION)
+%R - in prompt 1: = (normal), ^ (single-line mode), ! (disconnected)
+%R - in prompt 2: - (more input expected), * (in a comment), ' or " or $ (inside a string)
+%x - Transaction status: an empty string when not in a transaction block, or * when in a transaction block, or ! when in a failed transaction block, or ? when the transaction state is indeterminate (for example, because there is no connection).
+*/
+
+\set PROMPT1 '%[%033[1m%]%m / %/%R%[%033[0m%]%# '
+\set PROMPT2 ''
+
+-- show query execution time
+\timing on
+
+-- Stop hiding confirmation messages
+\set QUIET off

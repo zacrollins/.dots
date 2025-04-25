@@ -18,12 +18,15 @@ opt.cursorline = true
 opt.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-opt.clipboard = 'unnamedplus'
+vim.schedule(function()
+  opt.clipboard = 'unnamedplus'
+end)
 
 -- Disable word wrapping, that shit has no place on code
-vim.o.wrap = false
+opt.wrap = false
 
 -- Enable break indent
 opt.breakindent = true
@@ -84,7 +87,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 opt.termguicolors = true
 
 -- Set tab and indentation
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.expandtab = true
+-- opt.cursorcolumn = true     -- Highlight the current column
+opt.tabstop = 2             -- Number of spaces that a <Tab> in the file counts for
+opt.shiftwidth = 2          -- Number of spaces to use for each step of (auto)indent
+opt.softtabstop = 2         -- Number of spaces that a <Tab> counts for while performing editing operations
+opt.expandtab = true        -- Expand tab to 2 spaces
 opt.autoindent = true
+
+-- Folding
+-- opt.foldmethod = "indent"
+-- opt.foldlevel = 1

@@ -63,6 +63,7 @@ echo "##### ALL DONE"
 # stow -v -R -t "$HOME" -S borders
 # stow -v -R -t "$HOME" -S ghostty
 # stow -v -R -t "$HOME" -S git
+# stow -v -R -t "$HOME" -S psql
 # stow -v -R --no-folding -t "$HOME" -S k9s
 # stow -v -R --no-folding -t "$HOME" -S powershell 
 # stow -v -R -t "$HOME" -S skhd
