@@ -66,6 +66,7 @@ echo "##### ALL DONE"
 # stow -v -R -t "$HOME" -S psql
 # stow -v -R --no-folding -t "$HOME" -S k9s
 # stow -v -R --no-folding -t "$HOME" -S powershell 
+# stow -v -R -t "$HOME" -S sesh
 # stow -v -R -t "$HOME" -S skhd
 # stow -v -R -t "$HOME" -S starship
 # stow -v -R -t "$HOME" -S tmux

@@ -60,20 +60,26 @@
     changed = red bold
 
 [merge]
-	# include summaries of merged commits in newly created merge commit messages
+    # include summaries of merged commits in newly created merge commit messages
     log = true
-    tool = vscode
-    conflictstyle = diff3
+    tool = nvimdiff
+    conflictstyle = merge
+[mergetool]
+    prompt = false
+    keepBackup = false
+[mergetool "nvimdiff"]
+    layout = "LOCAL,BASE,REMOTE / MERGED"
 
-[mergetool "vscode"]
-    cmd = code --wait $merged
-
+[difftool]
+    prompt = true
 [diff]
-    tool = vscode
+    tool = nvimdiff
     colorMoved = default
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
-[difftool "vscode"]
-    cmd = code --wait --diff $local $remote
+# [difftool "vscode"]
+#    cmd = code --wait --diff $local $remote
 
 [help]
     # "guess" correct command when misspelling commands
@@ -84,12 +90,12 @@
     # set how git handles fast-forward, can be false or only
     # false will create extra merge commit on pull
     # only will only pull if fast-forward is possible (same as --ff-only)
-    # ff = only
+    ff = only
 
     # always do --rebase on pull
     # this prevents wierd merges when someone pushed a new commit and you have made local commits
     # can be potentially dangerous
-    rebase = true
+    # rebase = true
 
 [push]
     # when doing git push, only push current branch
@@ -103,4 +109,17 @@
 [credential "https://github.com"]
 	username = zacrollins
 [credential "https://dev.azure.com"]
-	useHttpPath = true
+    useHttpPath = true
+
+[alias]
+    aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+    br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+    cob = checkout -b
+    cm = commit -m
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<<%an>>%Creset' --abbrev-commit --date=relative
+    s = status -sb
+    staa = !git stash apply && git stash drop
+    staged = diff --cached
+    undo = reset HEAD~1 --mixed
+

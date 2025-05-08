@@ -141,7 +141,7 @@ Set-PSReadLineKeyHandler -ViMode Insert -Key Ctrl+w -Function BackwardKillWord
 
 # PS FZF
 if (!(Get-Module PSFzf -ListAvailable)) {
-   Find-PSResource PSFzf | Install-PSResource 
+   Find-PSResource PSFzf | Install-PSResource
 }
 Remove-PSReadLineKeyHandler 'Ctrl+r'
 Remove-PSReadLineKeyHandler 'Ctrl+t'
@@ -150,6 +150,12 @@ Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 
 #endregion PSReadline
+
+# ------
+# zoxide
+# ------
+
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 # ------
 # Pyenv

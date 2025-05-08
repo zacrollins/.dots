@@ -1,0 +1,27 @@
+# -----------
+# sesh config
+# -----------
+
+# [default_session]
+# startup_command = "y"
+
+[[session]]
+name = "dots"
+path = "~/.dots"
+startup_command = "y"
+
+[[session]]
+name = "infra"
+path = "~/src/idl/infra"
+
+[[session]]
+name = "k8s-lab"
+path = "~/src/zr/k8s-lab"
+
+[[session]]
+name = "k8s-manifests"
+path = "~/src/idl/k8s-manifests"
+
+[[session]]
+name = "kraken"
+path = "~/src/idl/kraken"
