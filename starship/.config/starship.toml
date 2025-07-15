@@ -30,10 +30,12 @@ disabled = false
 # suffix = "⟫"
 
 [directory]
-truncate_to_repo = true
 format = '[$path]($style)[$read_only]($read_only_style) '
 style = "bold lavender"
 read_only = " 󰌾"
+truncate_to_repo = true
+# truncation_length = 3
+# truncation_symbol = ".../"
 
 [time]
 disabled = false
@@ -50,12 +52,12 @@ vimcmd_replace_symbol = '[](bold fg:purple)'
 vimcmd_visual_symbol = '[](bold fg:lavender)'
 
 [git_branch]
-format = "[$branch]($style)"
+format = "[$symbol$branch]($style)"
 style = "flamingo"
 symbol = " "
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+format = "[[($conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
 style = "maroon"
 conflicted = "  "
 deleted = " "
@@ -70,6 +72,7 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "peach"
 
 [cmd_duration]
+min_time = 500
 format = "[$duration]($style) "
 style = "yellow"
 
@@ -79,7 +82,8 @@ style = "teal"
 symbol = " "
 
 [kubernetes]
-format = '[󱃾 $context \($namespace\)](dimmed green) '
+# format = '[󱃾 $context \($namespace\)](dimmed green) '
+format = '[󱃾 $context](dimmed green) '
 disabled = false
 contexts = [
     { context_pattern = "idl-core-1-dev-aks", context_alias = "dev" },

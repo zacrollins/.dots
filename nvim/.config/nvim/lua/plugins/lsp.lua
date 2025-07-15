@@ -34,7 +34,6 @@ return {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
-
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')                         -- Jump to the definition of the word under you cursor (go back with <C-t>)
           map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')                          -- Find references for the word under you cursor
           map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')                 -- Jump to the implementation of the word under you cursor
@@ -164,6 +163,23 @@ return {
           },
         },
         yamlls = {
+          -- Have to add this for yamlls to understand that we support line folding
+          capabilities = {
+            textDocument = {
+              foldingRange = {
+                dynamicRegistration = false,
+                lineFoldingOnly = true,
+              },
+            },
+          },
+          -- lazy-load schemastore when needed
+          on_new_config = function(new_config)
+            new_config.settings.yaml.schemas = vim.tbl_deep_extend(
+              "force",
+              new_config.settings.yaml.schemas or {},
+              require("schemastore").yaml.schemas()
+            )
+          end,
           settings = {
             redhat = { telemetry = { enabled = false } },
             yaml = {
@@ -172,6 +188,7 @@ return {
                 singleQuote = true,
                 printWidth = 120,
               },
+              keyOrdering = false,
               validate = true,
               completion = true,
               schemaStore = {
@@ -182,15 +199,15 @@ return {
                 url = '',
               },
               -- schemas = require('schemastore').yaml.schemas(),
-              schemas = {
-                kubernetes = "*.yaml",
-                ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
-                ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-                ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/**/*.{yml,yaml}",
-                ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
-                ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
-                ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
-              },
+              -- schemas = {
+              --   kubernetes = "*.yaml",
+              --   ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+              --   ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+              --   ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/**/*.{yml,yaml}",
+              --   ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+              --   ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+              --   ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+              -- },
             },
           },
         },

@@ -65,6 +65,9 @@ export SHELL_SESSIONS_DISABLE=1        # Make Apple Terminal behave.
 # Use `< file` to quickly view the contents of any file.
 [[ -z "$READNULLCMD" ]] || READNULLCMD=$PAGER
 
+# eza (better ls) config path
+export EZA_CONFIG_DIR=$XDG_CONFIG_HOME/eza
+
 #region Pyenv
 # export PYENV_ROOT="$HOME/.pyenv"
 # [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"

@@ -21,6 +21,7 @@ return {
         "helm",
         "html",
         "json",
+        "latex",
         "lua",
         "query",
         "markdown",

@@ -14,6 +14,7 @@
 
 -- unicode for borders
 \pset linestyle unicode
+\pset border 2
 --\pset unicode_border_linestyle single
 --\pset unicode_column_linestyle single
 --\pset unicode_header_linestyle double

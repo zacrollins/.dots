@@ -41,7 +41,17 @@ return {
 					{
 						'buffers',
 					}
-				}
+				},
+        lualine_c = {
+          {
+            function()
+              return ("%s"):format(require("schema-companion.context").get_buffer_schema().name)
+            end,
+            cond = function()
+              return package.loaded["schema-companion"]
+            end,
+          },
+        },
 			},
 			extensions = { }
 		})

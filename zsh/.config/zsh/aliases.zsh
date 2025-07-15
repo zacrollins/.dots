@@ -131,6 +131,9 @@ alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 # code
 # alias code='code-insiders'
 
+# show path human readable
+alias showpath="echo $PATH | sed 's/\:/\n/g'"
+
 # kubectl
 if command -v kubectl 2>&1 >/dev/null; then
     if command -v kubecolor 2>&1 >/dev/null; then

@@ -2,6 +2,8 @@
 # sesh config
 # -----------
 
+sort_order = ["tmux", "config", "zoxide"]
+
 # [default_session]
 # startup_command = "y"
 

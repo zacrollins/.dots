@@ -7,8 +7,8 @@ return {
   event = {
     -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
     -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-    "BufReadPre " .. vim.fn.expand "~" .. "znotes/znotes/**.md",
-    "BufNewFile " .. vim.fn.expand "~" .. "znotes/znotes/**.md"
+    "BufReadPre " .. vim.fn.expand "~" .. "znotes/**.md",
+    "BufNewFile " .. vim.fn.expand "~" .. "znotess/**.md"
   },
   dependencies = {
     -- Required.
@@ -26,7 +26,7 @@ return {
     workspaces = {
       {
         name = "znotes",
-        path = "~/znotes/znotes",
+        path = "~/znotes",
       }
     },
     completion = {
