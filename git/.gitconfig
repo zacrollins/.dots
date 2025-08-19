@@ -47,8 +47,9 @@
     # check version of manager using:
     # git credential-manager version
     helper = manager
-	helper = 
+	helper =
 	helper = /usr/local/share/gcm-core/git-credential-manager
+
 [color]
 	# use colors when writing output to terminal
     ui = auto
@@ -64,17 +65,24 @@
     log = true
     tool = nvimdiff
     conflictstyle = merge
+
 [mergetool]
     prompt = false
     keepBackup = false
+
 [mergetool "nvimdiff"]
     layout = "LOCAL,BASE,REMOTE / MERGED"
 
 [difftool]
     prompt = true
+
 [diff]
     tool = nvimdiff
-    colorMoved = default
+    colorMoved = plain
+    mnemonicPrefix = true
+    algorithm = histogram
+    renames = true
+
 [difftool "nvimdiff"]
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
@@ -85,6 +93,11 @@
     # "guess" correct command when misspelling commands
     # this will make "git commt" work
     autocorrect = -1
+
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
 
 [pull]
     # set how git handles fast-forward, can be false or only
@@ -99,15 +112,18 @@
 
 [push]
     # when doing git push, only push current branch
-    default = current
+    default = simple
+    autoSetupRemote = true
 
 [log]
     # default to not show the full commit object name
     abbrevCommit = true
     # show short ref names on git log
     decorate = short
+
 [credential "https://github.com"]
 	username = zacrollins
+
 [credential "https://dev.azure.com"]
     useHttpPath = true
 
@@ -123,3 +139,8 @@
     staged = diff --cached
     undo = reset HEAD~1 --mixed
 
+[branch]
+    sort = -committerdate
+
+[column]
+    ui = auto

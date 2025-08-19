@@ -96,6 +96,10 @@ function zvm_after_init() {
 }
 source $(brew --prefix)/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
+# nx completion
+#############################################
+[ -f $ZDOTDIR/plugins/nx-completion/nx-completion.plugin.zsh ] && source $ZDOTDIR/plugins/nx-completion/nx-completion.plugin.zsh
+
 # TMUX
 #############################################
 # Start the tmux session if not alraedy in the tmux session
