@@ -1,20 +1,22 @@
 -- pull in the wezterm API
 local wezterm = require("wezterm")
 
--- this will hold the configuration
-local config = wezterm.config_builder()
+return {
+    adjust_window_size_when_changing_font_size = false,
+    color_scheme = "Catppuccin Mocha",
+    enable_tab_bar = false,
+    font_size = 18,
+    font = wezterm.font("JetBrainsMono Nerd Font"),
+    macos_window_background_blur = 10,
+    window_background_opacity = 0.9,
+    window_decorations = "RESIZE",
 
-config.font = wezterm.font("FiraCode Nerd Font")
-config.font_size = 18
-
-config.color_scheme = "Catppuccin Mocha"
-
-config.window_background_opacity = 0.9
-config.macos_window_background_blur = 10
-
-config.enable_tab_bar = false
-
-config.window_decorations = "RESIZE"
-
--- return config
-return config
+    -- keybinds
+    -- keys = {
+    --     {
+    --         key = "Enter",
+    --         mods = "CMD",
+    --         action = wezterm.action({ EmitEvent = "toggle-fullscreen" }),
+    --     }
+    -- }
+}
