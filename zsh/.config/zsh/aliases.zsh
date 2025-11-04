@@ -130,6 +130,7 @@ alias dnsflush="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 # code
 # alias code='code-insiders'
+alias codei='code-insiders'
 
 # show path human readable
 alias showpath="echo $PATH | sed 's/\:/\n/g'"

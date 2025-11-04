@@ -2,15 +2,15 @@
 # Default: 2
 cpu: 4
 
-# Size of the disk in GiB to be allocated to the virtual machine.
+# Size of the disk in GiB to be allocated to the virtual machine for container data.
 # NOTE: value can only be increased after virtual machine has been created.
 #
 # Default: 100
-disk: 50
+disk: 100
 
 # Size of the memory in GiB to be allocated to the virtual machine.
 # Default: 2
-memory: 8
+memory: 16
 
 # Architecture of the virtual machine (x86_64, aarch64, host).
 #
@@ -33,17 +33,22 @@ hostname: ""
 kubernetes:
   # Enable kubernetes.
   # Default: false
-  enabled: false
+  enabled: fase
   
   # Kubernetes version to use.
   # This needs to exactly match a k3s version https://github.com/k3s-io/k3s/releases
   # Default: latest stable release
-  version: v1.28.10+k3s1
+  version: v1.33.5+k3s1
   
   # Additional args to pass to k3s https://docs.k3s.io/cli/server
   # Default: traefik is disabled
   k3sArgs:
     - --disable=traefik
+  
+  # Kubernetes port to listen on
+  # A common port is 6443, though left unbound to ensure no port conflicts
+  # Default: pick random unbound port
+  port: 0
 
 # Auto-activate on the Host for client access.
 # Setting to true does the following on startup
@@ -59,6 +64,22 @@ network:
   # NOTE: this is currently macOS only and ignored on Linux.
   # Default: false
   address: true
+  
+  # Network mode for the virtual machine (shared, bridged).
+  # NOTE: this is currently macOS only and ignored on Linux.
+  # Default: shared
+  mode: ""
+  
+  # Network interface to use for bridged mode.
+  # This is only used when mode is set to bridged.
+  # NOTE: this is currently macOS only and ignored on Linux.
+  # Default: en0
+  interface: ""
+  
+  # Use the assigned IP address as the preferred route for the VM.
+  # Note: this only has an effect when `address` is set to true.
+  # Default: false
+  preferredRoute: false
   
   # Custom DNS resolvers for the virtual machine.
   #
@@ -123,13 +144,20 @@ docker: {}
 # Default: qemu
 vmType: vz
 
+# Port forwarder for the virtual machine (ssh, grpc).
+# ssh is more stable but supports only TCP.
+# grpc supports both TCP and UDP, but is experimental.
+#
+# Default: ssh
+portForwarder: ""
+
 # Utilise rosetta for amd64 emulation (requires m1 mac and vmType `vz`)
 # Default: false
 rosetta: true
 
 # Enable foreign architecture emulation via binfmt (e.g. amd64 on arm64, arm64 on amd64)
 # Default: true
-binfmt: null
+binfmt: true
 
 # Enable nested virtualization for the virtual machine (requires m3 mac and vmType `vz`)
 # Default: false
@@ -199,7 +227,7 @@ sshPort: 0
 #   - location: ~/projects
 #     writable: true
 #
-# Colima default behaviour: $HOME and /tmp/colima are mounted as writable.
+# Colima default behaviour: $HOME is mounted as writable.
 # Default: []
 mounts: []
 
@@ -210,6 +238,11 @@ mounts: []
 #
 # Default: ""
 diskImage: ""
+
+# Size of the disk in GiB for the root filesystem of the virtual machine.
+# This value is ignored if no runtime is in use. i.e. `none` runtime.
+# Default: 20
+rootDisk: 0
 
 # Environment variables for the virtual machine.
 #

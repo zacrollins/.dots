@@ -49,6 +49,12 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- whichkey
 -- keymap("n", "<Space>", ":call VSCodeNotify('whichkey.show')<CR>", opts)
 
+-- show all open editors in popup
+keymap("n", "<leader>,", "<Cmd>lua require('vscode').action('workbench.action.showAllEditors')<CR>")
+-- splits
+-- keymap("n", "ss", ":split")
+-- keymap("n", "sv", ":vsplit<CR>")
+
 --
 -- keymap({"n", "v"}, "<leader>tt", ":call VSCodeNotify('workbench.action.terminal.toggleTerminal')<CR>")
 -- keymap({"n", "v"}, "<leader>ta", ":call VSCodeNotify('workbench.action.toggleActivityBarVisibility')<CR>")

@@ -42,6 +42,11 @@ path=(
   $path
 )
 
+# If Go is installed, add its bin directory to the PATH.
+if command -v go &>/dev/null; then
+  path+="$(go env GOPATH)/bin"
+fi
+
 # History
 export HISTFILE="$ZDOTDIR/.zhistory"    # History filepath
 export HISTSIZE=10000                   # Maximum events for internal history

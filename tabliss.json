@@ -1,0 +1,204 @@
+{
+  "background": {
+    "display": {
+      "blur": 0,
+      "luminosity": -0.2
+    },
+    "id": "C4qNHrckw61A",
+    "key": "background/gradient"
+  },
+
+  "data/C4qNHrckw61A": {
+    "angle": 0,
+    "from": "#5e7787",
+    "to": "#3c0453",
+    "type": "linear-gradient"
+  },
+  "data/b6-opZukZJPZ": {
+    "input": "@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');\n"
+  },
+  "data/default-time": {
+    "hour12": true,
+    "mode": "digital",
+    "showDate": true,
+    "showDayPeriod": true,
+    "showMinutes": true,
+    "showSeconds": false,
+    "timeZone": null
+  },
+  "data/jgjd1fO8Jj7C": {
+    "searchEngine": "brave",
+    "suggestionsQuantity": 4
+  },
+  "data/v4qqfIkG60sI": {
+    "columns": 7,
+    "linkOpenStyle": false,
+    "links": [
+      {
+        "icon": "_favicon",
+        "url": "https://youtube.com"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://pinkbike.com"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://vitalmtb.com"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://www.mtbr.com/forums/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://www.singletracks.com/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://www.bikeradar.com/mtb"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://nsmb.com/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://mbaction.com/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://www.bikemag.com/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://bikerumor.com/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://theradavist.com/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://flowmountainbike.com/"
+      },
+      {
+        "name": "velo",
+        "url": "https://velo.outsideonline.com/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://www.gravelcyclist.com/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://racerxonline.com/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://omnivore.app"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://enduro21.com/en/"
+      },
+      {
+        "icon": "message-circle",
+        "url": "https://messages.google.com/web/conversations"
+      },
+      {
+        "icon": "calendar",
+        "url": "https://calendar.google.com/calendar/render#main_7"
+      },
+      {
+        "icon": "_favicon",
+        "url": "http://www.amazon.com/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://mail.google.com/mail/ca/?pli=1#inbox"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://classifieds.ksl.com/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://www.strava.com/login"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://www.trainerroad.com/career/zacrollins"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://www.americafirst.com/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://192.168.1.1/home"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://unifi.ui.com/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://slickdeals.com"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://bikecloset.com/"
+      },
+      {
+        "icon": "_favicon",
+        "url": "https://keep.google.com/"
+      }
+    ],
+    "visible": true
+  },
+  "focus": false,
+  "widget/DdjL7s1OwYnV": {
+    "display": {
+      "fontFamily": "Roboto",
+      "fontSize": 38,
+      "position": "topCentre"
+    },
+    "id": "DdjL7s1OwYnV",
+    "key": "widget/weather",
+    "order": 0
+  },
+  "widget/default-greeting": null,
+  "widget/default-time": {
+    "display": {
+      "fontFamily": "Roboto",
+      "fontSize": 18,
+      "position": "topCentre"
+    },
+    "id": "default-time",
+    "key": "widget/time",
+    "order": 1
+  },
+  "widget/jgjd1fO8Jj7C": {
+    "display": {
+      "fontFamily": "Roboto",
+      "fontSize": 28,
+      "position": "topCentre"
+    },
+    "id": "jgjd1fO8Jj7C",
+    "key": "widget/search",
+    "order": 2
+  },
+  "widget/v4qqfIkG60sI": {
+    "display": {
+      "fontFamily": "Roboto",
+      "position": "topCentre"
+    },
+    "id": "v4qqfIkG60sI",
+    "key": "widget/links",
+    "order": 3
+  },
+  "locale": "en",
+  "timeZone": null,
+  "version": 3
+}
